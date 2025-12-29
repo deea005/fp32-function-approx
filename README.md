@@ -2,7 +2,7 @@ Attempt for FP32-friendly approximation and evaluation of smooth nonlinear funct
 
 ## Overview
 
-Motivated by the challenge of efficient inference on resource-constrained hardware, can we precompute compact approximations to smooth nonlinear functions $f : \mathbb{R} \to \mathbb{R}$ such as the ones present in neural network accelerators that maintain $\~10^{-7}$ accuracy that we can evaluate in fp32 arithmetic with no operations more expensive than multiplication/addition.
+Motivated by the challenge of efficient inference on resource-constrained hardware, can we precompute compact approximations to smooth nonlinear functions $f : \mathbb{R} \to \mathbb{R}$ such as the ones present in neural network accelerators that maintain $\~10^{-7}$ accuracy on specified domains that we can evaluate in fp32 arithmetic with no operations more expensive than multiplication/addition.
 
 
 This system automatically constructs optimal function approximations through two stages: Given a function $f$ and domain $[a,b]$, automatically selects between global and piecewise Chebyshev representations based on our cost. Then, we return a compact encoding  $\theta \in \mathbb{R}^B$ containing all approximation metadata and coefficients. Given $\theta$ and input $x$, selects the active polynomial piece and evaluates using Clenshaw recurrence, which is numerically stable and only requires multiplication/addition.
